@@ -68,7 +68,7 @@ T=csvread('../resources/GlobalTemperatureAnomaly-1958-2008.csv');
 
 %%
 % That's interesting. Now, we don't see any output from the function call. Why? We've added a semicolon to the end of the expression,
-% which supresses the output in MATLAB. To show the output, we can leave off the semicolon, type in the name of the variable, or use
+% which suppresses the output in MATLAB. To show the output, we can leave off the semicolon, type in the name of the variable, or use
 % a display() command.  The function is not called for reasons of 
 % readability of this document.
 
@@ -82,7 +82,7 @@ size(T)
 612/12
 
 %% 
-% That's right: from 1958 to 2008.
+% That's right: from 1958 through 2008.
 
 %% *Step 2: Plot the data*
 % We will display the data in two ways: as a time series of the monthly temperature anomalies versus time, and as a histogram. 
