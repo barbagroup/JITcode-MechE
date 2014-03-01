@@ -87,15 +87,15 @@ while escape == 0:
     if command == 'turn around':
         heading = -heading
     plt.figure(figsize=(10, 5))
-    plt.imshow(maze, cmap=pyplot.cm.Reds, interpolation='nearest')
-    plt.xticks([]), pyplot.yticks([])
+    plt.imshow(maze, cmap=plt.cm.Reds, interpolation='nearest')
+    plt.xticks([]), plt.yticks([])
     plt.show()
     print(position, heading)
 print('done')
 
 plt.figure(figsize=(10, 5))
-plt.imshow(maze, cmap=pyplot.cm.Reds, interpolation='nearest')
-plt.xticks([]), pyplot.yticks([])
+plt.imshow(maze, cmap=plt.cm.Reds, interpolation='nearest')
+plt.xticks([]), plt.yticks([])
 plt.show()
 
 
