@@ -49,7 +49,7 @@ while escape == 0:
 		heading = -heading
 	plt.imshow(maze, cmap=plt.cm.Reds, interpolation='nearest')
 	plt.xticks([]), plt.yticks([])
-	plt.draw()
+	plt.show()
 	print(position, heading)
 print('made it!')
 
