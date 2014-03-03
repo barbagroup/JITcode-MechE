@@ -269,13 +269,13 @@ axis([1958, 2100,-.5 ,2])
 out = transpose([years;temp]);%transpose the matrix to match our input file
 
 %%
-% Ok, that estimation looks reasonable.  Let's save the data that describes
-% it back to a .csv file, like the one we originally imported.
+% Ok, that estimation looks reasonable.  Let's save the x and y values of a 
+% the estimation that we just created.
 csvwrite('../resources/GlobalTemperatureEstimate-1958-2100.csv', out)
 %%
 % Now, lets make a nicer picture that we can show to back up some of our 
 % information. We can plot the linear regression as well as the original 
-% data and then save it back.
+% data and then save it as an image.
 outplot = figure; % we need to be able to reference our figure!
 hold on
 plot(year,T(:,2),'color','g');
