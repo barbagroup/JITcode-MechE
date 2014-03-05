@@ -69,8 +69,13 @@ T=csvread('../resources/GlobalTemperatureAnomaly-1958-2008.csv');
 %%
 % That's interesting. Now, we don't see any output from the function call. Why? We've added a semicolon to the end of the expression,
 % which suppresses the output in MATLAB. To show the output, we can leave off the semicolon, type in the name of the variable, or use
-% a display() command.  The function is not called for reasons of 
-% readability of this document.
+% a display() command. We could also look at it in the array viewer.  To do this, find the variable name in the "Workspace" section of
+% your MATLAB window, and double click it.  This lets us scroll through the data in an intuitive way to better visualize its significance.
+% The screenshot below shows where you can find the array.
+
+%%
+% 
+% <<Array_viewer_workspace.png>>
 
 %%
 % Let's find out how big the array is. For that, we use a cool function called _size()_:
@@ -83,6 +88,22 @@ size(T)
 
 %% 
 % That's right: from 1958 through 2008.
+
+%%
+% We'll be using these two columns of data a lot.  To reference a column of
+% data, you can use the syntax array(:,column number).  The general scheme
+% in matlab is that the first part, the :, references the rows.  Using a
+% semicolon here means "all rows." The second part, the column number,
+% selects a column.  Using the array viewer, we can see that the first
+% column, 1, contains the year data, while the second column contains the
+% anomalies. You can remember that it's rows, then columns by just thinking about RC,
+% like remote control.  MATLAB is sort of like remote control for your computer, right?
+%
+%%
+% Lets save our columns of data with variable names that make sense.
+
+Temp = T(:,2);
+year = T(:,1);
 
 %% *Step 2: Plot the data*
 % We will display the data in two ways: as a time series of the monthly temperature anomalies versus time, and as a histogram. 
@@ -99,7 +120,7 @@ size(T)
 % We extract the values of the second column by specifying 2 as the second index (the first column has index 1)
 % and using the colon notation : to mean _all rows_. Check it out:
 figure
-plot(T(:,2))
+plot(Temp)
 %%
 % _Do you see a trend in the data?_
 %
@@ -108,23 +129,37 @@ plot(T(:,2))
 % to the year, instead of the location of the data in the array?
 %
 %%
-% The plot function can take another input; let's get the year displayed as well.
+% The plot function can some more inputs; check out the link above to Mathwork's help document.
+% If you ever want to know more about a function, try typing help(function) or doc(function).  You can 
+% also use the help interactively, or search the Mathwork's website.  Let's
+% pretty our plot up a bit
 
 figure
-plot(T(:,1),T(:,2))
+plot(year,Temp)
+title('Temperature Anomaly 1958-2008')
+xlabel('Year')
+ylabel('Anomaly')
 
 %%
 % The temperature anomaly certainly seems to show an increasing trend. But we're not going to stop there, of course. 
 % It's not that easy to convince people that the planet is warming, as you know.
 %
 %%
-% Plotting a histogram is as easy as calling the function hist(). Why should it be any harder?
+% Plotting a histogram, to show how often a the anomaly falls within some range
+% function hist(). Why should it be any harder?
+
 figure
-hist(T(:,2))
+hist(Temp)
 %%
 % _What does this plot tell you about the data_? It's more interesting than just an increasing trend, 
-% that's for sure. You might want to look at more statistics now: mean, median, standard deviation.
-%
+% that's for sure. You might want to look at more statistics now: mean,
+% median, standard deviation. Use the help function to figure out how to do
+% this.  You should get:
+% 
+% * mean of 0.0998
+% * median of 0.0736
+% * standard deviation of 0.2395
+
 %%
 % You can control several parameters of the 
 % <http://www.mathworks.com/help/matlab/ref/hist.html _hist()_>
@@ -136,8 +171,18 @@ hist(T(:,2))
 % To help you follow the flow here, we've added some comments. In MATLAB, these follow the % symbol.
 % Try some other things out; it's really customizable.
 figure %create a new figure
-[frequency,values]= hist(T(:,2)); %get histogram data from (T):,2))
+[frequency,values]= hist(Temp); %get histogram data from (T):,2))
+%the above command saves the _frequency_, or how often, each "bin" in the
+%histogram matches the data.  "The values" array saves the actual locations
+%of the bins.
 bar(values, frequency,'FaceColor','g','EdgeColor','w') %create a bar plot
+%The bar plot above replaces the original histogram we used, because it is
+%a lot easier to change colors and, generally, make the plot nicer looking.
+%We use the values and frequency arrays we made with the hist function as
+%the data for the plot.
+title('Anomaly Histogram')
+xlabel('Anomaly')
+ylabel('Frequency')
 %%
 % This is fun. Finally, we'll put both plots on the same figure using the 
 % <http://www.mathworks.com/help/matlab/ref/subplot.html _subplot()_> 
@@ -150,10 +195,16 @@ bar(values, frequency,'FaceColor','g','EdgeColor','w') %create a bar plot
 
 figure % create new figure
 subplot(1,2,1) %activate first subplot, a 1x2 selection
-plot(T(:,1),T(:,2),'color','g')%plot the lineplot in green
+plot(year,Temp,'color','g')%plot the lineplot in green
+title('Temperature Anomaly 1958-2008')
+xlabel('Year')
+ylabel('Anomaly')
 subplot(1,2,2)%activate the second subplot
-[frequency,values] = hist(T(:,2));%get histogram data from (T):,2))
+[frequency,values] = hist(Temp);%get histogram data from (T):,2))
 bar(values, frequency,'FaceColor','g','EdgeColor','w')%create a bar plot
+title('Anomaly Histogram')
+xlabel('Anomaly')
+ylabel('Frequency')
 
 %% *Step 3: Smooth the data and do regression*
 % You see a lot of fluctuations on the time series, so you might be asking yourself how 
@@ -180,18 +231,27 @@ bar(values, frequency,'FaceColor','g','EdgeColor','w')%create a bar plot
 figure
 n = 12; %window size of 12 months
 b = ones(1,n)/n; %this is the 1/n part of our running average
-TMA = filter(b, 1, T(:,2)); % the filter command does a convolution for us
-plot(T(:,1),TMA,'color','g') %plot our convolution!
+TMA = filter(b, 1, Temp); % the filter command does a convolution for us
+plot(year,TMA,'color','g') %plot our convolution!
+title('Running Average')
+xlabel('Year')
+ylabel('Anomaly')
 
 %%
 % We use a _window_ of 12 data points, meaning that the plot shows the average temperature over the last 12 months. 
 % Looking at the plot, we can still see a trend, but the range of values is smaller.
-% Let's plot the original time series together with the smoothed version:
+% Let's plot the original time series together with the smoothed version;
+% you should edit the code below so that the plot of the Time Moving
+% average is red with a linewidth of 3.  Use the help documentation to
+% figure it out! 
 
 figure
 hold on %using the hold command lets us plot something new on the same plot
-plot(T(:,1),T(:,2),'color','g')
-plot(T(:,1),TMA,'color','r','linewidth',3)
+plot(year,Temp,'color','g')
+plot(year,TMA,'color','g')
+title('Temperature Anomaly with Running Average')
+xlabel('Year')
+ylabel('Anomaly')
 
 %%
 % That is interesting! The smoothed data follows the trend nicely but has 
@@ -212,12 +272,17 @@ plot(T(:,1),TMA,'color','r','linewidth',3)
 % variables $x$ and $y$, and the order of the polynomial for the fit 
 % (in this case, 1 for linear regression).
 
-year = T(:,1);   % it's time to use a more friendly name for column 1 of our data
-coefficients = polyfit(year,T(:,2),1); %polyfit returns coefficients
+coefficients = polyfit(year,Temp,1); %polyfit returns coefficients
 figure 
 hold on %we'll be using more than one plot
-plot(year,T(:,2),'color','g');
-plot(year,coefficients(1)*year+coefficients(2),'--','linewidth',2);
+plot(year,Temp,'color','g');
+plot(year,polyval(coefficients,year),'--','linewidth',2);
+% the polyval function takes an array of coefficients(from polyfit, in our
+% case), and a number of x-values to create the y-values of the function
+% described by those coefficients.  use the doc command to find out more.
+title('Temperature Anomaly Fit Line')
+xlabel('Year')
+ylabel('Anomaly')
 axis([1958 2008 -.6 .8]) %this changes the axes of our plot to frame the data
 
 %% *Step 4: Correcting for auto correlation*
@@ -262,11 +327,17 @@ spacing = (2008-1958)/612;
 length = (2100-1958)/spacing;
 length = int8(length); %ensure length is an integer for the linear spacing
 years = linspace(1958,2100,length);
-temp = coefficients(1)*years+coefficients(2);
+est = polyval(coefficients,years);
 figure
-plot(years,temp)
+plot(years,est,'--','linewidth',2)
+title('Temperature Estimate')
+xlabel('Year')
+ylabel('Anomaly')
 axis([1958, 2100,-.5 ,2])
-out = transpose([years;temp]);%transpose the matrix to match our input file
+out = [years;est].';%transpose the matrix to match our input file
+% we need to transpose the matrix because, by default, the data was saved
+% in rows.  The data that we originally imported was in columns, so we're
+% going to match that format.
 
 %%
 % Ok, that estimation looks reasonable.  Let's save the x and y values of a 
@@ -277,10 +348,18 @@ csvwrite('../resources/GlobalTemperatureEstimate-1958-2100.csv', out)
 % information. We can plot the linear regression as well as the original 
 % data and then save it as an image.
 outplot = figure; % we need to be able to reference our figure!
+%Here, we're naming our figure to the name outplot so we can tell the
+%computer what to save.
 hold on
-plot(year,T(:,2),'color','g');
-plot(years,temp,'--','linewidth',2);
+plot(year,Temp,'color','g');
+plot(years,est,'--','linewidth',2);
+title('Temperature Anomaly and Prediction')
+xlabel('Year')
+ylabel('Anomaly')
 print(outplot,'../resources/GlobalTempPlot.png') %this statement saves a picture
+%The first argument here, "outplot" tells the code what variable to save:
+%our picture, while the second argument is the relative file path to save
+%to.
 
 %%
 % Nice! Now weve got some stuff that we could use in a report, or show to
