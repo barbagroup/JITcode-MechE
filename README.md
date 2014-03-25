@@ -7,4 +7,4 @@ JIT modules to learn computing in a problem-based context within Mechanical Engi
 ###Notebooks
 * [QuickPythonIntro](http://nbviewer.ipython.org/urls/github.com/barbagroup/JITcode-MechE/blob/master/lessons/00_Lesson00_QuickPythonIntro.ipynb)
 * [ReadAndPlot](http://nbviewer.ipython.org/urls/github.com/barbagroup/JITcode-MechE/blob/master/lessons/01_Lesson01_ReadAndPlot.ipynb)
-* [Particle on Parabola](http://nbviewer.ipython.org/urls/github.com/barbagroup/JITcode-MechE/blob/master/lessons/99_Lesson99_Particle_on_Parabola.ipynb)
+* [CreateFunctions](http://nbviewer.ipython.org/urls/github.com/barbagroup/JITcode-MechE/blob/master/lessons/02_Lesson02_CreateFunctions.ipynb)
