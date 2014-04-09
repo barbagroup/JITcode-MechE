@@ -10,3 +10,5 @@ plt.figure(figsize=(10, 5))
 plt.imshow(maze, cmap=plt.cm.Reds, interpolation='nearest')
 plt.xticks([]), plt.yticks([])
 plt.show()
+
+np.savetxt("maze1.csv", maze, delimiter=",")
