@@ -6,7 +6,7 @@ def hazard(front,maze):
         return 'hazard'
     else:
         return 'safe'
-def gorover(student_func):
+def gorover(student_func,maze):
     '''
     student_func should be defined in the iPython notebook namespace and provide directions as text strings, either
     'turn right'
@@ -19,11 +19,6 @@ def gorover(student_func):
     from numpy.random import random_integers as rand
     import matplotlib.pyplot as plt
     import matplotlib.animation as animation
-    maze02 = np.array([[5,5,5,5,5,5,5,5,5,5],[5,0,0,0,4,0,3,0,0,5],[5,0,0,3,3,3,3,3,3,5]])
-    maze35 = np.array([[5,0,0,3,0,0,3,0,3,5],[5,3,0,3,0,0,3,3,0,5],[5,0,0,3,0,0,3,0,0,5]])
-    maze69 = np.array([[5,0,0,0,0,0,3,3,0,5],[5,0,0,3,0,0,0,1,3,5],[5,3,0,0,0,0,3,0,0,5],[5,5,5,5,5,5,5,5,5,5]])
-    maze = np.append(maze02,maze35,axis = 0)
-    maze = np.append(maze,maze69,axis = 0)
     mazehist = maze.copy()
 
     position = np.array([7,7])
