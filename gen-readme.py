@@ -28,7 +28,7 @@ def notebooks():
     '''
     get list of all ipython notebook files in lessons subdir
     '''
-    return glob('lessons/*.ipynb')
+    return glob('lessons/[0-9]*.ipynb')
 
 def lesson_id(filename):
     '''
