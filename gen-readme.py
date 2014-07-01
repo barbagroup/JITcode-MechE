@@ -110,7 +110,7 @@ def write_readme(modules, fo):
     '''
     fo.write('{}\n'.format(header)) 
     for mod in modules:
-        fo.write('{}\n'.format(format_module(name=mod)))
+        fo.write('\n{}\n'.format(format_module(name=mod)))
 	for nb in modules[mod]:
         	name = lesson_name(nb)
         	url = nb_url(nb)
