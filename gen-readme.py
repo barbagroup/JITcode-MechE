@@ -21,7 +21,7 @@ JIT modules to learn computing in a problem-based context within Mechanical Engi
 format_item = '* [{name}]({url})'.format
 #Creates a hyperlink using markdown syntax with displayed text "name" and links to "url"
 
-bb_url = 'github.com/barbagroup/JITcode-MechE/blob/master/{}'.format
+bb_url = 'github.com/barbagroup/JITcode-MechE/blob/dev/{}'.format
 #base url of repo where notebooks are stored
 
 format_module = '####{name}'.format
