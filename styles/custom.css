@@ -64,7 +64,13 @@
     
     .warning{
         color: rgb( 240, 20, 20 )
-        }  
+    }  
+
+    code { 
+	 background-color: #f7f7f7; !important
+	 border: 1px solid #cfcfcf; !important
+	 border-radius: 4px;        !important
+    }
 </style>
 <script>
     MathJax.Hub.Config({
