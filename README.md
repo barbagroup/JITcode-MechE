@@ -16,4 +16,5 @@ JIT modules to learn computing in a problem-based context within Mechanical Engi
 * [Loops](http://nbviewer.ipython.org/urls/github.com/barbagroup/JITcode-MechE/blob/dev/module00_Introduction_to_Python/04_Lesson04_Loops.ipynb)
 * [Rover Loops](http://nbviewer.ipython.org/urls/github.com/barbagroup/JITcode-MechE/blob/dev/module00_Introduction_to_Python/04_Lesson04_Rover_Loops.ipynb)
 * [DataAnalysis](http://nbviewer.ipython.org/urls/github.com/barbagroup/JITcode-MechE/blob/dev/module00_Introduction_to_Python/05_Lesson05_DataAnalysis.ipynb)
+* [Line Detection](http://nbviewer.ipython.org/urls/github.com/barbagroup/JITcode-MechE/blob/dev/module00_Introduction_to_Python/06_Lesson06_Line_Detection.ipynb)
 * [Particle on Parabola](http://nbviewer.ipython.org/urls/github.com/barbagroup/JITcode-MechE/blob/dev/module00_Introduction_to_Python/99_Lesson99_Particle_on_Parabola.ipynb)
