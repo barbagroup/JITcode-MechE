@@ -118,6 +118,7 @@ def write_readme(modules, fo):
 
 def main():
     nblist = sorted(notebooks(), key=lesson_id) #get list of notebooks sorted by leading number
+    print nblist
     modules = sort_module_list(sort_by_module(notebooks()))
     with open('README.md', 'w') as fo:
         write_readme(modules, fo)
