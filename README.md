@@ -10,6 +10,7 @@ JIT modules to learn computing in a problem-based context within Mechanical Engi
 * [Ball Detection](http://nbviewer.ipython.org/urls/github.com/barbagroup/JITcode-MechE/blob/dev/module01_Analytical_Mechanics_II/00_Lesson00_Ball_Detection.ipynb)
 * [Circle Detection with OpenCV](http://nbviewer.ipython.org/urls/github.com/barbagroup/JITcode-MechE/blob/dev/module01_Analytical_Mechanics_II/00_Lesson00_Circle_Detection_with_OpenCV.ipynb)
 * [Circle Detection with SciPy](http://nbviewer.ipython.org/urls/github.com/barbagroup/JITcode-MechE/blob/dev/module01_Analytical_Mechanics_II/00_Lesson00_Circle_Detection_with_SciPy.ipynb)
+* [Testing Video Detection](http://nbviewer.ipython.org/urls/github.com/barbagroup/JITcode-MechE/blob/dev/module01_Analytical_Mechanics_II/01_Lesson01_Testing_Video_Detection.ipynb)
 
 ####Introduction to Python
 * [Quick Python Intro](http://nbviewer.ipython.org/urls/github.com/barbagroup/JITcode-MechE/blob/dev/module00_Introduction_to_Python/00_Lesson00_Quick_Python_Intro.ipynb)
